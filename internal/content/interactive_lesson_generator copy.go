@@ -6,11 +6,18 @@ import (
 	"fmt"
 )
 
-type VideoLessonGenerator struct{}
+type InteractiveLessonGenerator struct{}
+
+func (g *InteractiveLessonGenerator) Generate(ctx context.Context, data string) (*Lesson, error) {
+	return &Lesson{
+		Type:    "interactive_lesson",
+		Content: fmt.Sprintf("Interactive lesson for topic %s", data),
+	}, nil
+}
 
 func (g *VideoLessonGenerator) Generate(ctx context.Context, data string) (*Lesson, error) {
 	var content string
-	query := `SELECT content FROM lessons WHERE topic = $1 AND type = 'video' LIMIT 1`
+	query := `SELECT content FROM lessons WHERE topic = $1 AND type = 'interactive_lesson' LIMIT 1`
 
 	err := g.repo.db.QueryRowContext(ctx, query, data).Scan(&content)
 	if err != nil {
