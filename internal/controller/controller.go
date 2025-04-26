@@ -8,8 +8,8 @@ import (
 )
 
 type Controllers struct {
-	HealthCheck  *HealthCheckController
-	ReusableCode *ReusableCodeController
+	HealthCheck *HealthCheckController
+	Content     *ContentController
 }
 
 func BindJSON[B interface{}](ctx *gin.Context) (bindedBody *B, err *failure.BindJSONErr) {

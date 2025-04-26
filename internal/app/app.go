@@ -23,7 +23,7 @@ func initServerDeps(cfg *configs.Config, infra *infrastructure) *router.Engine {
 
 func initControllers(infra *infrastructure, modules *Modules) *controller.Controllers {
 	return &controller.Controllers{
-		HealthCheck:  controller.NewHealthCheckController(),
-		ReusableCode: controller.NewReusableCodeController(infra.log, modules.ReusableCode),
+		HealthCheck: controller.NewHealthCheckController(),
+		Content:     controller.NewContentController(infra.log, modules.Content),
 	}
 }

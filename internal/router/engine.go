@@ -56,5 +56,5 @@ func (e *Engine) registerRoutes(
 ) {
 	root := e.Handler.Group("promotion")
 	initHealthCheckRouter(root, controllers.HealthCheck)
-	initReusableCodeRouter(root, controllers.ReusableCode, authMiddlewares.InternalAuth)
+	initContentRouter(root, controllers.Content, authMiddlewares.InternalAuth)
 }

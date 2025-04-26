@@ -1,13 +1,13 @@
 package app
 
-import reusablecode "promotion/internal/reusable_code"
+import content "promotion/internal/content"
 
 type Modules struct {
-	ReusableCode *reusablecode.Module
+	Content *content.Module
 }
 
 func initModules(infra *infrastructure) *Modules {
 	return &Modules{
-		ReusableCode: reusablecode.NewModule(infra.log, infra.db.MySQL),
+		Content: content.NewModule(infra.log, infra.db.MySQL),
 	}
 }
